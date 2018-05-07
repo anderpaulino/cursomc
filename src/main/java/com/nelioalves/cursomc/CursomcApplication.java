@@ -95,6 +95,7 @@ public class CursomcApplication implements CommandLineRunner{
 		est2.getCidades().addAll(Arrays.asList(c2, c3));
 		
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
 		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
@@ -106,6 +107,7 @@ public class CursomcApplication implements CommandLineRunner{
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		
 		clienteRepository.save(cli1);
+		
 		enderecoRepository.saveAll(Arrays.asList(e1,e2));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -135,6 +137,7 @@ public class CursomcApplication implements CommandLineRunner{
 		p1.getItens().addAll(Arrays.asList(ip1));
 		p2.getItens().addAll(Arrays.asList(ip2));
 		p3.getItens().addAll(Arrays.asList(ip3));
+		
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
 		
