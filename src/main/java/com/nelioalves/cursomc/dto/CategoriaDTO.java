@@ -1,11 +1,17 @@
 package com.nelioalves.cursomc.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import com.nelioalves.cursomc.domain.Categoria;
 
 public class CategoriaDTO {
 	
 	private Integer id;
 	
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Size(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
 
 	public CategoriaDTO() {
