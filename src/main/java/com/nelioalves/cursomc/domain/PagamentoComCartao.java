@@ -21,10 +21,10 @@ public class PagamentoComCartao extends Pagamento{
 	}
 
 
-	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
 
-		this.numeroDeParcelas = numeroParcelas;
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
 
@@ -33,8 +33,8 @@ public class PagamentoComCartao extends Pagamento{
 	}
 
 
-	public void setNumeroDeParcelas(Integer numeroParcelas) {
-		this.numeroDeParcelas = numeroParcelas;
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 	
 	
