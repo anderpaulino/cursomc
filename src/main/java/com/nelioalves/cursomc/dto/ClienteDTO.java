@@ -7,7 +7,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.nelioalves.cursomc.domain.Cliente;
+import com.nelioalves.cursomc.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable{
 
 	/**
