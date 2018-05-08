@@ -18,7 +18,6 @@ import com.nelioalves.cursomc.domain.enums.TipoCliente;
 import com.nelioalves.cursomc.dto.ClienteDTO;
 import com.nelioalves.cursomc.dto.ClienteNewDTO;
 import com.nelioalves.cursomc.repositories.ClienteRepository;
-import com.nelioalves.cursomc.repositories.EnderecoRepository;
 import com.nelioalves.cursomc.services.exceptions.DataIntegrityException;
 import com.nelioalves.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -27,9 +26,6 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository repo;
-	
-	@Autowired
-	private EnderecoRepository enderecoRespository;
 	
 	
 	public Cliente find(Integer id) {
@@ -41,10 +37,7 @@ public class ClienteService {
 	@Transactional
 	public Cliente insert(Cliente obj) {
 		obj.setId(null);
-		obj = repo.save(obj);
-		enderecoRespository.saveAll(obj.getEnderecos());
-		
-		return obj;
+		return repo.save(obj);
 	}
 
 
