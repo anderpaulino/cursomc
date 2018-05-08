@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nelioalves.cursomc.domain.ItemPedido;
 import com.nelioalves.cursomc.domain.PagamentoComBoleto;
@@ -26,6 +27,9 @@ public class PedidoService {
 	private BoletoService boletoService;
 	
 	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
 	private PagamentoRepository pagamentoRepsitory;
 	
 	@Autowired
@@ -40,10 +44,11 @@ public class PedidoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado Id: "+ id + ", Tipo: "+ Pedido.class.getName()));
 	}
 
-
+	@Transactional
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
+		obj.setCliente(clienteService.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDETE);
 		obj.getPagamento().setPedido(obj);
 		if (obj.getPagamento() instanceof PagamentoComBoleto) {
@@ -55,10 +60,12 @@ public class PedidoService {
 		
 		for(ItemPedido ip : obj.getItens()) {
 			ip.setDesconto(0.0);
-			ip.setPreco(produtoRepsitory.findById(ip.getProduto().getId()).orElse(null).getPreco());
+			ip.setProduto(produtoRepsitory.findById(ip.getProduto().getId()).orElse(null));
+			ip.setPreco(ip.getProduto().getPreco());
 			ip.setPedido(obj);
 			itemPedidoRepsitory.save(ip);
 		}
+		System.out.println(obj);
 		
 		return obj;
 	}
