@@ -45,9 +45,7 @@ public class Cliente implements Serializable{
 	
 	@JsonIgnore
 	private String senha;
-	
-	private String imageUrl;
-	
+		
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
@@ -160,16 +158,6 @@ public class Cliente implements Serializable{
 
 	public void addPerfil(Perfil perfil) {
 		this.perfis.add(perfil.getCod());
-	}
-
-	
-	
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	@Override
