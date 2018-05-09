@@ -25,17 +25,20 @@ public class ClienteDTO implements Serializable{
 	
 	@Email(message="inválido")
 	private String email;
+	
+	private String senha;
 
 	public ClienteDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClienteDTO(Integer id, String nome, String email) {
+	public ClienteDTO(Integer id, String nome, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.senha = senha;
 	}
 	
 	public ClienteDTO(Cliente obj) {
@@ -68,6 +71,16 @@ public class ClienteDTO implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	
 	
 	
 
